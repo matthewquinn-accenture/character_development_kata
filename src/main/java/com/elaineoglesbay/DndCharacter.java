@@ -5,11 +5,11 @@ package com.elaineoglesbay;
  */
 public class DndCharacter {
     private String name;
-    private String health;
+    private Integer health;
 
     public DndCharacter(String name) {
         this.name = name;
-        this.health = "100";
+        this.health = 100;
     }
 
     public String getName() {
@@ -20,15 +20,19 @@ public class DndCharacter {
         this.name = name;
     }
 
-    public String getHealth() {
+    public Integer getHealth() {
         return health;
     }
 
-    public void setHealth(String health) {
+    public void setHealth(Integer health) {
         this.health = health;
     }
 
     public String display() {
-        return "Name: " + name + ", Health: " + health;
+        return "Name: " + name + ", Health: " + health.toString();
+    }
+
+    public void attack(DndCharacter opponent) {
+        opponent.health -= 5;
     }
 }

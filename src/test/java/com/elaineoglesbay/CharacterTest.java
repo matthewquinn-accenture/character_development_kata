@@ -18,7 +18,23 @@ public class CharacterTest {
     @Test
     public void shouldDisplayCharacterWithOneHealth()  {
         DndCharacter character = new DndCharacter("Matthew");
-        character.setHealth("1");
+        character.setHealth(1);
         Assert.assertEquals("Name: Matthew, Health: 1", character.display());
+    }
+
+    @Test
+    public void shouldAttackOpponent() {
+        DndCharacter character1 = new DndCharacter("Elaine");
+        DndCharacter character2 = new DndCharacter("Matthew");
+        character1.attack(character2);
+        Assert.assertEquals(95, character2.getHealth(),0);
+    }
+    @Test
+    public void shouldAttackOpponentTwice() {
+        DndCharacter character1 = new DndCharacter("Elaine");
+        DndCharacter character2 = new DndCharacter("Matthew");
+        character1.attack(character2);
+        character1.attack(character2);
+        Assert.assertEquals(90, character2.getHealth(), 0);
     }
 }
