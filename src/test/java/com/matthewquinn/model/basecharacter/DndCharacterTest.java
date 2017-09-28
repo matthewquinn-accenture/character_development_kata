@@ -27,26 +27,6 @@ public class DndCharacterTest {
         Assert.assertEquals("Name: Matthew, Health: 1", player1.display());
     }
 
-    @Test
-    public void shouldHealSelf() {
-        player1.setHealth(50);
-        player1.heal();
-        Assert.assertEquals(60, player1.getHealth(), 0);
-    }
-
-    @Test
-    public void shouldNotHealIfAtFullHealth() {
-        player1.heal();
-        Assert.assertEquals(100, player1.getHealth(), 0);
-    }
-
-    @Test
-    public void shouldNotHaveHealthOver100() {
-        player1.setHealth(99);
-        player1.heal();
-        Assert.assertEquals(100, player1.getHealth(), 0);
-    }
-
     private DndCharacter buildDnDCharacter(String name) {
         return new DndCharacter(name);
     }
