@@ -11,4 +11,9 @@ public class Peasant extends DndCharacter {
         setAttackBehavior(new PeasantAttack());
         setHealBehavior(new PeasantHeal());
     }
+
+    @Override
+    public void display() {
+        System.out.println("I'm a Peasant!");
+    }
 }
