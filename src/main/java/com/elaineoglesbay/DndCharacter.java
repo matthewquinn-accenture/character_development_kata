@@ -35,9 +35,10 @@ public class DndCharacter {
     }
 
     public void heal() {
-        if (health < 100) {
+        if ((health + 10) > 100) {
+            health = 100;
+        } else {
             health += 10;
         }
-
     }
 }
