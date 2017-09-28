@@ -1,4 +1,4 @@
-package com.matthewquinn;
+package com.matthewquinn.model.basecharacter;
 
 
 public class DndCharacter {

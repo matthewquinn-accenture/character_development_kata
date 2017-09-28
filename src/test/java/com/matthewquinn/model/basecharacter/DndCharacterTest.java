@@ -1,9 +1,11 @@
-package com.matthewquinn;
+package com.matthewquinn.model.basecharacter;
 
-import org.junit.*;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 
 
-public class CharacterTest {
+public class DndCharacterTest {
 
     private DndCharacter player1;
     private DndCharacter player2;
