@@ -4,7 +4,7 @@ package com.matthewquinn.model.basecharacter;
 import com.matthewquinn.service.basebehavior.AttackBehavior;
 import com.matthewquinn.service.basebehavior.HealBehavior;
 
-public class DndCharacter {
+public abstract class DndCharacter {
     private String name;
     private Integer health;
     private AttackBehavior attackBehavior;
@@ -47,9 +47,7 @@ public class DndCharacter {
         this.healBehavior = healBehavior;
     }
 
-    public String display() {
-        return "Name: " + name + ", Health: " + health.toString();
-    }
+    public abstract void display();
 
     public void attack(DndCharacter opponent) {
         opponent.health -= attackBehavior.attack();
