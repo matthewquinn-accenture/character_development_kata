@@ -50,6 +50,13 @@ public class CharacterTest {
         Assert.assertEquals(100, player1.getHealth(), 0);
     }
 
+    @Test
+    public void shouldNotHaveHealthOver100() {
+        player2.attack(player1);
+        player1.heal();
+        Assert.assertEquals(100, player1.getHealth(), 0);
+    }
+
     private DndCharacter buildDnDCharacter(String name) {
         return new DndCharacter(name);
     }
