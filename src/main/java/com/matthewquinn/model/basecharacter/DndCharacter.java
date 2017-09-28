@@ -1,9 +1,14 @@
 package com.matthewquinn.model.basecharacter;
 
 
+import com.matthewquinn.service.basebehavior.AttackBehavior;
+
 public class DndCharacter {
     private String name;
     private Integer health;
+    private AttackBehavior attackBehavior;
+
+
 
     public DndCharacter(String name) {
         this.name = name;
@@ -26,12 +31,20 @@ public class DndCharacter {
         this.health = health;
     }
 
+    public AttackBehavior getAttackBehavior() {
+        return attackBehavior;
+    }
+
+    public void setAttackBehavior(AttackBehavior attackBehavior) {
+        this.attackBehavior = attackBehavior;
+    }
+
     public String display() {
         return "Name: " + name + ", Health: " + health.toString();
     }
 
     public void attack(DndCharacter opponent) {
-        opponent.health -= 5;
+        opponent.health -= attackBehavior.attack();
     }
 
     public void heal() {
