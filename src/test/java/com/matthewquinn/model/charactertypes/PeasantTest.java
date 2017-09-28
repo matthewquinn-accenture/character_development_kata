@@ -2,15 +2,22 @@ package com.matthewquinn.model.charactertypes;
 
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 public class PeasantTest {
 
+    private Peasant player1;
+    private Peasant player2;
+
+    @Before
+    public void setUpPlayers() throws Exception {
+        player1 = buildPlayers("Matthew");
+        player2 = buildPlayers("Elaine");
+    }
+
     @Test
     public void shouldHaveAttackOf3() {
-        Peasant player1 = new Peasant("Matthew");
-        Peasant player2 = new Peasant("Elaine");
-
         player1.attack(player2);
 
         Assert.assertEquals(97, player2.getHealth(), 0);
@@ -18,11 +25,13 @@ public class PeasantTest {
 
     @Test
     public void shouldHaveHealOf20() {
-        Peasant player1 = new Peasant("Matthew");
-
         player1.setHealth(75);
         player1.heal();
 
         Assert.assertEquals(95, player1.getHealth(), 0);
+    }
+
+    private Peasant buildPlayers(String name) {
+        return new Peasant(name);
     }
 }
