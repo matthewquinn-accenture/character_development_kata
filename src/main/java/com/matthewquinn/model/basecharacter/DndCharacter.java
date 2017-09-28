@@ -2,13 +2,13 @@ package com.matthewquinn.model.basecharacter;
 
 
 import com.matthewquinn.service.basebehavior.AttackBehavior;
+import com.matthewquinn.service.basebehavior.HealBehavior;
 
 public class DndCharacter {
     private String name;
     private Integer health;
     private AttackBehavior attackBehavior;
-
-
+    private HealBehavior healBehavior;
 
     public DndCharacter(String name) {
         this.name = name;
@@ -39,6 +39,14 @@ public class DndCharacter {
         this.attackBehavior = attackBehavior;
     }
 
+    public HealBehavior getHealBehavior() {
+        return healBehavior;
+    }
+
+    public void setHealBehavior(HealBehavior healBehavior) {
+        this.healBehavior = healBehavior;
+    }
+
     public String display() {
         return "Name: " + name + ", Health: " + health.toString();
     }
@@ -48,10 +56,10 @@ public class DndCharacter {
     }
 
     public void heal() {
-        if ((health + 10) > 100) {
+        if ((health + healBehavior.heal()) > 100) {
             health = 100;
         } else {
-            health += 10;
+            health += healBehavior.heal();
         }
     }
 }
