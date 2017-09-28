@@ -1,56 +1,57 @@
 package com.elaineoglesbay;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.*;
 
-import javax.crypto.AEADBadTagException;
 
-/**
- * Created by elaineoglesbay on 9/26/17.
- */
 public class CharacterTest {
+
+    private DndCharacter player1;
+    private DndCharacter player2;
+
+    @Before
+    public void setUpPlayers() throws Exception {
+        player1 = buildDnDCharacter("Matthew");
+        player2 = buildDnDCharacter("Elaine");
+    }
+
     @Test
     public void shouldDisplayCharacterNameAndFullHealth() {
-        DndCharacter character = new DndCharacter("Matthew");
-        Assert.assertEquals("Name: Matthew, Health: 100", character.display());
+        Assert.assertEquals("Name: Matthew, Health: 100", player1.display());
     }
 
     @Test
     public void shouldDisplayCharacterWithOneHealth()  {
-        DndCharacter character = new DndCharacter("Matthew");
-        character.setHealth(1);
-        Assert.assertEquals("Name: Matthew, Health: 1", character.display());
+        player1.setHealth(1);
+        Assert.assertEquals("Name: Matthew, Health: 1", player1.display());
     }
 
     @Test
     public void shouldAttackOpponent() {
-        DndCharacter character1 = new DndCharacter("Elaine");
-        DndCharacter character2 = new DndCharacter("Matthew");
-        character1.attack(character2);
-        Assert.assertEquals(95, character2.getHealth(),0);
+        player1.attack(player2);
+        Assert.assertEquals(95, player2.getHealth(),0);
     }
     @Test
     public void shouldAttackOpponentTwice() {
-        DndCharacter character1 = new DndCharacter("Elaine");
-        DndCharacter character2 = new DndCharacter("Matthew");
-        character1.attack(character2);
-        character1.attack(character2);
-        Assert.assertEquals(90, character2.getHealth(), 0);
+        player1.attack(player2);
+        player1.attack(player2);
+        Assert.assertEquals(90, player2.getHealth(), 0);
     }
 
     @Test
     public void shouldHealSelf() {
-        DndCharacter character1 = new DndCharacter("Elaine");
-        character1.setHealth(50);
-        character1.heal();
-        Assert.assertEquals(60, character1.getHealth(), 0);
+        player1.setHealth(50);
+        player1.heal();
+        Assert.assertEquals(60, player1.getHealth(), 0);
     }
 
     @Test
     public void shouldNotHealIfAtFullHealth() {
-        DndCharacter character1 = new DndCharacter("Elaine");
-        character1.heal();
-        Assert.assertEquals(100, character1.getHealth(), 0);
+        player1.heal();
+        Assert.assertEquals(100, player1.getHealth(), 0);
+    }
+
+    private DndCharacter buildDnDCharacter(String name) {
+        return new DndCharacter(name);
     }
 
 }

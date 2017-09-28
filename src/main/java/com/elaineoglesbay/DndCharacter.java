@@ -1,8 +1,6 @@
 package com.elaineoglesbay;
 
-/**
- * Created by elaineoglesbay on 9/26/17.
- */
+
 public class DndCharacter {
     private String name;
     private Integer health;
