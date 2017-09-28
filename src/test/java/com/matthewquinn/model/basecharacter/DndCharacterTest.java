@@ -28,18 +28,6 @@ public class DndCharacterTest {
     }
 
     @Test
-    public void shouldAttackOpponent() {
-        player1.attack(player2);
-        Assert.assertEquals(95, player2.getHealth(),0);
-    }
-    @Test
-    public void shouldAttackOpponentTwice() {
-        player1.attack(player2);
-        player1.attack(player2);
-        Assert.assertEquals(90, player2.getHealth(), 0);
-    }
-
-    @Test
     public void shouldHealSelf() {
         player1.setHealth(50);
         player1.heal();
@@ -54,7 +42,7 @@ public class DndCharacterTest {
 
     @Test
     public void shouldNotHaveHealthOver100() {
-        player2.attack(player1);
+        player1.setHealth(99);
         player1.heal();
         Assert.assertEquals(100, player1.getHealth(), 0);
     }
