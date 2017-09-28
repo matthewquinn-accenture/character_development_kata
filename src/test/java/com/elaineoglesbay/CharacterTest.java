@@ -37,4 +37,20 @@ public class CharacterTest {
         character1.attack(character2);
         Assert.assertEquals(90, character2.getHealth(), 0);
     }
+
+    @Test
+    public void shouldHealSelf() {
+        DndCharacter character1 = new DndCharacter("Elaine");
+        character1.setHealth(50);
+        character1.heal();
+        Assert.assertEquals(60, character1.getHealth(), 0);
+    }
+
+    @Test
+    public void shouldNotHealIfAtFullHealth() {
+        DndCharacter character1 = new DndCharacter("Elaine");
+        character1.heal();
+        Assert.assertEquals(100, character1.getHealth(), 0);
+    }
+
 }

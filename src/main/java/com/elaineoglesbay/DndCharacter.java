@@ -35,4 +35,11 @@ public class DndCharacter {
     public void attack(DndCharacter opponent) {
         opponent.health -= 5;
     }
+
+    public void heal() {
+        if (health < 100) {
+            health += 10;
+        }
+
+    }
 }
